@@ -1,0 +1,11 @@
+.App {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #1f2937;
+  color: antiquewhite;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
