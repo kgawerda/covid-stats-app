@@ -1,5 +1,9 @@
+html {
+  background: #1f2937;
+}
+
 .App {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
