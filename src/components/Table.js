@@ -4,7 +4,7 @@ import TableHead from "./TableHead";
 import "../styles/Table.css";
 
 const Table = () => {
-  const [data, setData] = useState([]);
+  const [tableData, setTableData] = useState([]);
 
   const columns = [
     { label: "Country", accessor: "Country" },
@@ -23,16 +23,30 @@ const Table = () => {
           return response.json();
         })
         .then(function (myJson) {
-          setData(myJson.Countries);
+          setTableData(myJson.Countries);
         });
     };
     getData();
   }, []);
+
+  const handleSorting = (sortField, sortOrder) => {
+    if (sortField) {
+      const sorted = [...tableData].sort((a, b) => {
+        return (
+          a[sortField].toString().localeCompare(b[sortField].toString(), "en", {
+            numeric: true,
+          }) * (sortOrder === "asc" ? 1 : -1)
+        );
+      });
+      setTableData(sorted);
+    }
+  };
+
   return (
     <>
       <table className="table">
-        <TableHead columns={columns} />
-        <TableBody columns={columns} tableData={data} />
+        <TableHead columns={columns} handleSorting={handleSorting} />
+        <TableBody columns={columns} tableData={tableData} />
       </table>
     </>
   );
