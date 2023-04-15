@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
 import "../styles/Table.css";
+import SearchBar from "./SearchBar";
 
 const Table = () => {
   const [tableData, setTableData] = useState([]);
+  const [initialData, setInitialData] = useState([]);
 
   const columns = [
     { label: "Country", accessor: "Country" },
@@ -24,6 +26,7 @@ const Table = () => {
         })
         .then(function (myJson) {
           setTableData(myJson.Countries);
+          setInitialData(myJson.Countries);
         });
     };
     getData();
@@ -42,8 +45,22 @@ const Table = () => {
     }
   };
 
+  const handleSearch = (query) => {
+    if (query === "") {
+      setTableData(initialData);
+    } else {
+      const filtered = initialData
+        .filter((data) =>
+          data["Country"].toLowerCase().includes(query.toLowerCase())
+        )
+        .map((data) => data);
+      setTableData(filtered);
+    }
+  };
+
   return (
     <>
+      <SearchBar handleSearch={handleSearch} />
       <table className="table">
         <TableHead columns={columns} handleSorting={handleSorting} />
         <TableBody columns={columns} tableData={tableData} />
