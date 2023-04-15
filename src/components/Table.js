@@ -31,10 +31,6 @@ const Table = () => {
   return (
     <>
       <table className="table">
-        <caption>
-          Current data from https://covid19api.com/, column headers are
-          sortable.
-        </caption>
         <TableHead columns={columns} />
         <TableBody columns={columns} tableData={data} />
       </table>
