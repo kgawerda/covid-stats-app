@@ -8,12 +8,12 @@ const Table = () => {
 
   const columns = [
     { label: "Country", accessor: "Country" },
-    { label: "New Confirmed Cases", accessor: "NewConfirmed" },
     { label: "Total Confirmed Cases", accessor: "TotalConfirmed" },
-    { label: "New Deaths", accessor: "NewDeaths" },
+    { label: "New Confirmed Cases", accessor: "NewConfirmed" },
     { label: "Total Deaths", accessor: "TotalDeaths" },
-    { label: "New Recovered Cases", accessor: "NewRecovered" },
+    { label: "New Deaths", accessor: "NewDeaths" },
     { label: "Total Recovered Cases", accessor: "TotalRecovered" },
+    { label: "New Recovered Cases", accessor: "NewRecovered" },
   ];
 
   useEffect(() => {

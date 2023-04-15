@@ -15,8 +15,18 @@ const TableHead = ({ columns, handleSorting }) => {
     <thead>
       <tr>
         {columns.map(({ label, accessor }) => {
+          const cl =
+            sortField === accessor && order === "asc"
+              ? "up"
+              : sortField === accessor && order === "desc"
+              ? "down"
+              : "default";
           return (
-            <th key={accessor} onClick={() => handleSortingChange(accessor)}>
+            <th
+              key={accessor}
+              className={cl}
+              onClick={() => handleSortingChange(accessor)}
+            >
               {label}
             </th>
           );
